@@ -5,7 +5,7 @@ function App() {
 
   return (
     <>
-      <h1>Ecommerce 2204</h1>
+      <h1 className="bg-red-500">Ecommerce 2204</h1>
     </>
   )
 }

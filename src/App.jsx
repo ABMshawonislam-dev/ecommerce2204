@@ -1,3 +1,5 @@
+import { useState,useRef } from "react"
+
 import "./App.css"
 import Image from "./components/Image"
 import Logo from "./assets/logo.png"
@@ -13,47 +15,48 @@ import NextArrow from "./components/NextArrow"
 
 
 function App() {
-const settings = {
-  arrows:true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 3,
-      slidesToScroll: 1,
-      prevArrow: <PrevArrow />,
-      nextArrow: <NextArrow />,
-    };
+  let dropRef = useRef(null)
+
+  let handleDrop = (e)=>{
+    console.log(e.target)
+    console.log(dropRef.current.contains(e.target))
+
+    if(e.target.classList[0] == "clickbtn"){
+      if(dropRef.current.style.display == "block"){
+        dropRef.current.style.display = "none"
+      }else{
+        dropRef.current.style.display = "block"
+      }
+    }else{
+      if(!dropRef.current.contains(e.target)){
+        if(dropRef.current.style.display == "block"){
+          dropRef.current.style.display = "none"
+        }
+      }
+      
+    }
+  }
 
   return (
     <>
-      <Image src={Logo} />
-      <Facillity/>
-      <SubHeading text="Sub HEading" className="text-49"/>
-      <PortionHeading text="Portion Heading"  className="text-5xl"/>
-      <Button text="Add To Cart"/>
-      <div className="w-[300px]">
-        <Product/>
+      <div onClick={handleDrop}>
+      <button className="clickbtn">Click</button>
+
+<div className="bg-red-500 hidden" ref={dropRef}>
+<ul>
+  <li>Home</li>
+  <li>Home</li>
+  <li>Home</li>
+  <li>Home</li>
+</ul>
+
+</div>
+
+<h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis, blanditiis ab facilis enim quidem accusamus impedit velit aliquid voluptatibus suscipit natus saepe optio reprehenderit laudantium cupiditate? Ea aut delectus eum?</h1>
       </div>
 
-       <Slider {...settings}>
-          <div>
-            <Product/>
-          </div>
-          <div>
-            <Product/>
-          </div>
-          <div>
-           <Product/>
-          </div >
-          <div>
-            <Product/>
-          </div>
-          <div>
-            <Product/>
-          </div>
-          <div >
-            <Product/>
-          </div>
-        </Slider>
+ 
+      
     </>
   )
 }

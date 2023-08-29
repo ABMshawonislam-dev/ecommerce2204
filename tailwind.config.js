@@ -1,20 +1,20 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       fontFamily: {
-        'dm': ['DM Sans'],
+        dm: ["DM Sans"],
       },
-      fontSize:{
-        "39": "39px",
-        "49": "49px",
-      }
+      fontSize: {
+        39: "39px",
+        49: "49px",
+      },
+      colors: {
+        offwhite: "#F0F0F0",
+      },
     },
   },
   plugins: [],
-}
+};
 

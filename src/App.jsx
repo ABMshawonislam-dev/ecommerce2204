@@ -14,6 +14,48 @@ import PrevArrow from "./components/PrevArrow"
 import NextArrow from "./components/NextArrow"
 import Input from "./components/Input"
 
+import {
+  createRoutesFromElements,
+  createBrowserRouter,
+  Route,
+  RouterProvider
+} from "react-router-dom";
+import Test from "./components/Test"
+import RootLayouts from "./components/RootLayouts"
+import ErrorPage from "./pages/ErrorPage"
+
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route>
+
+
+    <Route
+      path="/"
+      element={<RootLayouts />}
+      >
+        <Route
+          path="/"
+          element={<Test />}
+          ></Route>
+          <Route
+            path="/shawon"
+            element={<Product />}
+          ></Route>
+          <Route
+            path="*"
+            element={<ErrorPage />}
+          ></Route>
+
+      </Route>
+
+
+
+      
+    </Route>
+  )
+);
+
 
 
 function App() {
@@ -25,10 +67,8 @@ function App() {
   return (
    <>
 
-  <Input placehoder="Ami Tmi " type="password" title="First Name *"/>
-  <Input placehoder="Email" type="email" title="First Name"/>
-  
-   
+    
+   <RouterProvider router={router} />
 
    
 

@@ -12,6 +12,11 @@ export default {
       },
       colors: {
         offwhite: "#F0F0F0",
+        ash: "#F5F5F3",
+      },
+      maxWidth: {
+        container: "1604px",
+        644: "644px"
       },
     },
   },

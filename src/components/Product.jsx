@@ -5,6 +5,7 @@ import Badge from './Badge'
 import PortionHeading from './PortionHeading'
 import Flex from './Flex'
 import {AiFillHeart} from "react-icons/ai"
+import { Link } from 'react-router-dom'
 
 const Product = ({heading}) => {
   return (
@@ -25,7 +26,10 @@ const Product = ({heading}) => {
             </div>
         </div>
         <Flex className="justify-between mt-3">
-            <PortionHeading text="Basic Crew Neck Tee"/>
+            <Link to="/">
+                 <PortionHeading text="Basic Crew Neck Tee"/>
+            </Link>
+           
             <p className='font-dm font-regular text-base'>$44.00</p>
         </Flex>
     </div>

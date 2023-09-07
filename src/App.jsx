@@ -23,6 +23,7 @@ import {
 import Test from "./components/Test"
 import RootLayouts from "./components/RootLayouts"
 import ErrorPage from "./pages/ErrorPage"
+import Signup from "./pages/Signup"
 
 
 const router = createBrowserRouter(
@@ -39,8 +40,12 @@ const router = createBrowserRouter(
           element={<Test />}
           ></Route>
           <Route
-            path="/shawon"
+            path="/shop"
             element={<Product />}
+          ></Route>
+          <Route
+            path="/sign-up"
+            element={<Signup />}
           ></Route>
           <Route
             path="*"

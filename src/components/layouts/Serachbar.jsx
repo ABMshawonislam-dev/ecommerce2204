@@ -5,8 +5,12 @@ import {FaBars,FaShoppingCart} from "react-icons/fa"
 import {BiSolidUser} from "react-icons/bi"
 import {RxTriangleDown} from "react-icons/rx"
 import {AiOutlineSearch} from "react-icons/ai"
+import { Link } from 'react-router-dom'
 
 const Serachbar = () => {
+    let handleBreadCrumb = (name)=>{
+        console.log(name)
+    }
   return (
     <section className='bg-ash py-10'>
         <Container>
@@ -20,7 +24,9 @@ const Serachbar = () => {
                 </div>
                 <Flex className='w-1/5 gap-x-10 justify-end items-center'>
                     <Flex>
-                        <BiSolidUser/>
+                        <Link onClick={()=>handleBreadCrumb("Sign Up")} to="/sign-up">
+                            <BiSolidUser/>
+                        </Link>
                         <RxTriangleDown/>
                     </Flex>
                     <FaShoppingCart/>

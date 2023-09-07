@@ -18,6 +18,9 @@ export default {
         container: "1604px",
         644: "644px"
       },
+      width:{
+        "48":"48%" 
+      }
     },
   },
   plugins: [],

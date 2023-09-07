@@ -9,7 +9,7 @@ import {BiLogoFacebook,BiLogoLinkedin,BiLogoInstagram} from "react-icons/bi"
 
 const Footer = () => {
   return (
-    <footer className='bg-ash py-14'>
+    <footer className='bg-ash py-14 mt-36'>
         <Container>
             <Flex>
                 <div className='w-2/12'>

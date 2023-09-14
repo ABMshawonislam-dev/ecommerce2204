@@ -5,7 +5,7 @@ import logo from "../../assets/logo.png"
 import Container from '../Container'
 import List from '../List'
 import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { pageName } from '../../slices/breadCrumbSlices'
 
 const Navbar = () => {
@@ -15,6 +15,9 @@ const Navbar = () => {
     let handleBreadCrumb = (name)=>{
        dispatch(pageName(name))
     }
+
+
+
   return (
     <nav className='py-8'>
         <Container>

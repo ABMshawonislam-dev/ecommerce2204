@@ -24,6 +24,7 @@ import Test from "./components/Test"
 import RootLayouts from "./components/RootLayouts"
 import ErrorPage from "./pages/ErrorPage"
 import Signup from "./pages/Signup"
+import Home from "./pages/Home"
 
 
 const router = createBrowserRouter(
@@ -37,7 +38,7 @@ const router = createBrowserRouter(
       >
         <Route
           path="/"
-          element={<Test />}
+          element={<Home />}
           ></Route>
           <Route
             path="/shop"

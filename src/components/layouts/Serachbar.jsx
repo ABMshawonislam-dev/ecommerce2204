@@ -6,16 +6,44 @@ import {BiSolidUser} from "react-icons/bi"
 import {RxTriangleDown} from "react-icons/rx"
 import {AiOutlineSearch} from "react-icons/ai"
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
+import { increment,decrement,removeFromCart } from '../../slices/cartSlices'
+import { useEffect } from 'react'
 
 const Serachbar = () => {
 
     let [open,setOpen] = useState(false)
+    let [total,setTotal] = useState(0)
 
     let handleBreadCrumb = (name)=>{
-        console.log(name)
+   
     }
         let cart = useSelector((state)=>state.cart.cartItem)
+        let dispatch = useDispatch()
+
+    let handleIncrement = (item) =>{
+        dispatch(increment(item))
+        setChange(!change)
+    }
+
+    let handleDecrement = (item) =>{
+        dispatch(decrement(item))
+    
+    }
+
+
+    useEffect(()=>{
+    
+        let total = 0
+        cart.map(item=>{
+            total += item.price*item.quantity
+            
+        })
+        setTotal(total)
+    },[cart])
+
+
+
   return (
     <section className='bg-ash py-10'>
         <Container>
@@ -38,13 +66,53 @@ const Serachbar = () => {
                 </Flex>
             </Flex>
             {open &&
-            <div className="w-2/6 bg-red-500 h-screen absolute top-0 right-0 z-10">
+            <div className="w-2/6 bg-black text-white h-screen absolute top-0 right-0 z-10">
                 <FaShoppingCart onClick={()=>setOpen(false)}/> 
-                <ul>
-                    {cart.map(item=>(
-                        <li>{item.title}- {item.quantity}</li>
-                    ))}
+                <ul className='flex text-black  justify-between bg-ash py-5 px-2'>
+                    <li>Action</li>
+                    <li>Product</li>
+                    <li>Price</li>
+                    <li>Quantity</li>
+                    <li>Subtotal</li>
                 </ul>
+                {cart.length > 0 
+                ? 
+                cart.map(item=>(
+                    <ul className='flex  justify-between  py-5 px-2 border-b border-solid border-white'>
+                            <li><button
+          className="bg-red-500 hover:bg-red-600 text-white font-bold p-2  focus:outline-none focus:shadow-outline"
+        onClick={()=>dispatch(removeFromCart(item))}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-4 w-4 inline-block align-middle mr-1"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+    
+        </button></li>
+                            <li>{item.title}</li>
+                            <li>{item.price}</li>
+                            <li className='border border-white border-solid py-1 px-5'>
+                                <button className='mr-2' onClick={()=>handleDecrement(item)}>-</button>
+                                {item.quantity}
+                                <button className='ml-2' onClick={()=>handleIncrement(item)}>+</button>
+                            </li>
+                            <li>{item.price*item.quantity}</li>
+                    </ul>
+                        ))
+                :
+                <h1 className='text-white text-center'>Cart Is Empty</h1>
+                }
+                <h1 className='text-white text-center absolute bottom-5 right-5'>Total: {total}</h1>
             </div>
             }
         </Container>

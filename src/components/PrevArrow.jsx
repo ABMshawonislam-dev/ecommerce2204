@@ -7,7 +7,7 @@ const PrevArrow = (props) => {
   return (
 
     <div
-      className={`flex justify-center items-center w-16 h-16 rounded-full bg-[#979797] cursor-pointer ${className}`}
+      className={`flex justify-center items-center w-16 h-16 rounded-full bg-[#979797] cursor-pointer ${props.class}`}
     //   style={{ ...style, display: "inline-block", background: "red" }}
       onClick={onClick}
     >
